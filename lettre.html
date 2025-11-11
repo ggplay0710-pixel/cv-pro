@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Générateur de Lettre de Motivation</title>
+  <link rel="stylesheet" href="lettre.css">
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo-link">
+      <img src="logo-png.png" alt="Logo du site" class="site-logo">
+    </a>
+    <h1><a href="index.html">Générateur de Lettre de Motivation</a></h1>
+  </header>
+
+  <main class="container">
+    <!-- FORMULAIRE -->
+    <section id="form-container">
+      <h2>Remplissez les informations</h2>
+      <form id="letterForm">
+        <div class="form-group">
+          <label>Nom et Prénom :</label>
+          <input type="text" id="name" placeholder="Ex : Amine Bensalah" required>
+        </div>
+
+        <div class="form-group">
+          <label>Adresse :</label>
+          <input type="text" id="address" placeholder="Ex : 12 rue Didouche Mourad, Alger">
+        </div>
+
+        <div class="form-group">
+          <label>Email :</label>
+          <input type="email" id="email" placeholder="Ex : exemple@mail.com">
+        </div>
+
+        <div class="form-group">
+          <label>Téléphone :</label>
+          <input type="text" id="phone" placeholder="Ex : +213 06 00 00 00">
+        </div>
+
+        <div class="form-group">
+          <label>Poste visé :</label>
+          <input type="text" id="poste" placeholder="Ex : Assistant Commercial">
+        </div>
+
+        <div class="form-group">
+          <label>Entreprise cible :</label>
+          <input type="text" id="entreprise" placeholder="Ex : Société ABC">
+        </div>
+
+        <div class="form-group">
+          <label>Actuellement en poste ?</label>
+          <select id="enPoste">
+            <option value="non">Non</option>
+            <option value="oui">Oui</option>
+          </select>
+        </div>
+
+        <div id="currentJobFields" class="hidden">
+          <div class="form-group">
+            <label>Poste actuel :</label>
+            <input type="text" id="posteActuel" placeholder="Ex : Vendeur polyvalent">
+          </div>
+          <div class="form-group">
+            <label>Entreprise actuelle :</label>
+            <input type="text" id="entrepriseActuelle" placeholder="Ex : Kiabi">
+          </div>
+          <div class="form-group">
+            <label>Depuis quand :</label>
+            <input type="text" id="dureePoste" placeholder="Ex : 5 mois">
+          </div>
+          <div class="form-group">
+            <label>Est-ce une candidature interne ?</label>
+            <select id="interne">
+              <option value="non">Non</option>
+              <option value="oui">Oui</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Vos points forts :</label>
+          <textarea id="forces" placeholder="Ex : organisé, motivé, bon relationnel..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label id="motivationLabel" for="motivation">Pourquoi cette entreprise :</label>
+          <textarea id="motivation" placeholder="Ex : entreprise innovante, valeurs humaines..."></textarea>
+        </div>
+
+        <button type="button" class="btn" id="generateLetter">🧾 Générer la Lettre</button>
+      </form>
+    </section>
+
+    <!-- APERÇU (CACHÉ PAR DÉFAUT) -->
+    <section id="letter-preview" class="hidden" aria-hidden="true">
+      <div class="preview-wrapper">
+        <div class="letter-container" id="letterContent"></div>
+      </div>
+
+      <div class="preview-actions">
+        <button class="btn" id="printLetter">🖨️ Imprimer / Télécharger</button>
+        <button class="btn btn-secondary" id="editLetter">✏️ Modifier</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Générateur CV - Lettre de Motivation</p>
+  </footer>
+
+  <script src="lettre.js"></script>
+</body>
+</html>

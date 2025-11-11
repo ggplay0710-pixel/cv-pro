@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Générateur de CV</title>
+  <link rel="stylesheet" href="cv.css" />
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo-link">
+      <img src="logo-png.png" alt="Logo du site" class="site-logo">
+    </a>
+  <h1><a href="index.html">Générateur Professionnel de CV</a></h1>
+  </header>
+  <div class="cv-container">
+
+    <!-- Barre latérale du formulaire -->
+    <aside class="sidebar">
+      <h2>Étapes</h2>
+      <ul>
+        <li class="active" data-step="1">1. Coordonnées</li>
+        <li data-step="2">2. Expériences</li>
+        <li data-step="3">3. Diplômes</li>
+        <li data-step="4">4. Langues</li>
+        <li data-step="5">5. Compétences</li>
+      </ul>
+    </aside>
+
+    <!-- Contenu du formulaire + aperçu -->
+    <main class="content">
+      <h2 id="step-title">Étape 1 : Vos coordonnées</h2>
+
+      <form id="form-container">
+        <!-- Étape 1 -->
+        <div class="form-step active" id="step-1">
+          <label>Photo :</label>
+          <input type="file" id="photo" accept="image/*"><br>
+
+          <label>Nom & Prénom :</label>
+          <input id="full-name" type="text" placeholder="Ex : Raphaël MARTIN"><br>
+
+          <!-- Intitulé du poste supprimé à la demande -->
+
+          <label>Date et lieu de naissance :</label>
+          <input id="birth" type="text" placeholder="Ex : 05/02/1998, Alger"><br>
+
+          <label>Adresse :</label>
+          <input id="address" type="text" placeholder="Ex : 12 rue Didouche Mourad, Alger"><br>
+
+          <label>Email :</label>
+          <input id="email" type="email" placeholder="exemple@email.com"><br>
+
+          <label>Téléphone :</label>
+          <input id="phone" type="tel" placeholder="+213 ..."><br>
+
+          <div class="extra-fields"></div>
+          <button type="button" class="btn small" id="add-extra">+ Ajouter un autre champ</button><br>
+
+          <label>Description / Profil :</label>
+          <textarea id="profile" placeholder="Décrivez-vous en quelques lignes..."></textarea>
+        </div>
+
+        <!-- Étape 2 -->
+        <div class="form-step" id="step-2">
+          <div class="items-container"></div>
+          <button type="button" class="btn small" id="add-experience">+ Ajouter une expérience</button>
+        </div>
+
+        <!-- Étape 3 -->
+        <div class="form-step" id="step-3">
+          <div class="items-container"></div>
+          <button type="button" class="btn small" id="add-diplome">+ Ajouter un diplôme</button>
+        </div>
+
+        <!-- Étape 4 -->
+        <div class="form-step" id="step-4">
+          <div class="items-container"></div>
+          <button type="button" class="btn small" id="add-langue">+ Ajouter une langue</button>
+        </div>
+
+        <!-- Étape 5 -->
+        <div class="form-step" id="step-5">
+          <div class="items-container"></div>
+          <button type="button" class="btn small" id="add-competence">+ Ajouter une compétence</button>
+          <br><br>
+
+          <label>Choisir un style de CV :</label>
+          <select id="cv-style">
+            <option value="classique">🎓 Classique</option>
+            <option value="moderne">💼 Moderne</option>
+            <option value="colore">🌈 Coloré</option>
+          </select>
+          <br><br>
+
+          <button type="button" class="btn" id="generateCV">🧾 Générer le CV</button>
+        </div>
+
+        <!-- Navigation -->
+        <div class="form-navigation">
+          <button type="button" class="btn" id="prev">⬅ Retour</button>
+          <button type="button" class="btn" id="next">Continuer ➡</button>
+        </div>
+      </form>
+
+      <!-- Aperçu du CV (généré) -->
+      <section id="cv-preview" class="cv-preview hidden" aria-hidden="true">
+        <div id="cv-content" class="cv-preview-inner"></div>
+
+        <div class="preview-actions">
+          <button class="btn" id="printCV">🖨️ Imprimer / Télécharger</button>
+          <button class="btn btn-secondary" id="editCV">✏️ Modifier</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <p>© 2025 Générateur CV. Tous droits réservés.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

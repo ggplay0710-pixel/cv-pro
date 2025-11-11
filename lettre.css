@@ -1,0 +1,224 @@
+/* ====== GLOBAL ====== */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #e3f2fd, #90caf9);
+  color: #333;
+  min-height: 100vh;
+}
+
+/* header */
+header {
+  text-align: center;
+  padding: 30px 20px;
+  background-color: #1565c0;
+  color: white;
+}
+
+a {
+  color: white;              /* couleur par défaut */
+}
+
+a:hover {
+  text-decoration: underline; /* effet au survol (optionnel) */
+  color: #f0f0f0;             /* couleur au survol */
+}
+
+a:visited {
+  color: white;              /* empêche le violet après clic */
+}
+/* Logo visible par défaut (ordinateur) */
+.site-logo {
+  width: 150px;
+  height: auto;
+}
+
+/* Cacher le logo sur les écrans de moins de 1024px (tablette et mobile) */
+@media (max-width: 1024px) {
+  .site-logo {
+    display: none;
+  }
+}
+
+
+.logo-link {
+  position: absolute;
+  top: 0px;
+  left: 50px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo {
+  width: 146px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+/* container layout */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 24px;
+}
+
+/* formulaire */
+#form-container {
+  width: 480px;
+  background: white;
+  border-radius: 10px;
+  padding: 22px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+#form-container h2 { color: #1565c0; text-align:center; margin-top:0; }
+.form-group { margin-bottom: 12px; }
+.form-group label { display:block; font-weight:600; margin-bottom:6px; }
+input, textarea, select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d0d7df;
+  border-radius: 6px;
+  resize: none;
+}
+.hidden { display: none !important; }
+
+.btn {
+  display:inline-block;
+  background:#1565c0;
+  color:#fff;
+  border:none;
+  padding:10px 16px;
+  border-radius:8px;
+  cursor:pointer;
+  margin-top:8px;
+}
+.btn-secondary { background:#42a5f5; color:#033459; }
+.btn:hover { opacity:0.95; }
+
+/* PREVIEW: wrapper centers the A4 box on screen */
+#letter-preview {
+  width: 100%;
+  display: none;                  /* hidden by default */
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* when visible, we use flex centering */
+#letter-preview:not(.hidden) {
+  display: flex;
+}
+
+/* preview-wrapper ensures center on screen */
+.preview-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* A4 box */
+.letter-container {
+  width: 210mm;
+  height: 297mm;
+  background: white;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+  border-radius: 6px;
+  padding: 25mm 20mm;
+  box-sizing: border-box;
+  overflow: hidden;
+  line-height: 1.5;
+}
+
+/* letter content */
+.letter-header { text-align: right; color:#1565c0; margin-bottom: 10px; }
+.letter-body { margin-top: 18px; }
+
+/* preview actions */
+.preview-actions { display:flex; justify-content:center; gap:16px; margin:12px 0 40px; }
+
+/* footer */
+footer { text-align:center; padding:14px; background:#1565c0; color:white; margin-top:20px; }
+
+/* --- Alignement des coordonnées et de la date --- */
+.letter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 30px;
+}
+
+.infos-gauche {
+  text-align: left;
+  line-height: 1.6;
+}
+
+.date-droite {
+  text-align: right;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Ajustement à l'impression */
+@media print {
+  .letter-header {
+    margin-top: 0;
+  }
+  .infos-gauche p {
+    margin: 2px 0;
+  }
+  .date-droite {
+    margin-top: 0;
+  }
+}
+
+
+/* ===== PRINT ===== */
+@media print {
+  /* hide everything except preview */
+  body * { visibility: hidden !important; }
+
+  #letter-preview, #letter-preview * { visibility: visible !important; }
+
+  /* center the preview in the paper */
+  #letter-preview {
+    position: fixed;
+    left: 0; top: 0;
+    width: 100vw; height: 100vh;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    background: white !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* place the A4 exactly centered and sized */
+  .letter-container {
+    width: 210mm !important;
+    height: 297mm !important;
+    padding: 20mm 18mm !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+
+  @page { size: A4; margin: 0mm; }
+
+  /* hide UI buttons */
+  .preview-actions, header, footer, #form-container { display: none !important; }
+
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
+}

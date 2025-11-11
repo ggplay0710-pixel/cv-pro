@@ -1,0 +1,361 @@
+/* header */
+header {
+  text-align: center;
+  padding: 30px 20px;
+  background-color: #1565c0;
+  color : white;
+}
+
+a {
+  color: white;              /* couleur par défaut */
+}
+
+a:hover {
+  text-decoration: underline; /* effet au survol (optionnel) */
+  color: #f0f0f0;             /* couleur au survol */
+}
+
+a:visited {
+  color: white;              /* empêche le violet après clic */
+}
+/* Logo visible par défaut (ordinateur) */
+.site-logo {
+  width: 150px;
+  height: auto;
+}
+
+/* Cacher le logo sur les écrans de moins de 1024px (tablette et mobile) */
+@media (max-width: 786px) {
+  .site-logo {
+    display: none;
+  }
+}
+
+.logo-link {
+  position: absolute;
+  top: 0px;
+  left: 50px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo {
+  width: 146px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+/* --- Reset / base --- */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #e9f2fb, #cfe9ff);
+  color: #222;
+}
+
+/* --- Layout général --- */
+.cv-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* --- Sidebar formulaire --- */
+.sidebar {
+  width: 250px;
+  background-color: #0d47a1;
+  color: white;
+  padding: 20px;
+}
+.sidebar h2 { text-align: center; margin-bottom: 18px; }
+.sidebar ul { list-style: none; padding: 0; margin: 0; }
+.sidebar li {
+  padding: 12px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.05);
+  cursor: pointer;
+}
+.sidebar li.active, .sidebar li:hover { background: rgba(255,255,255,0.12); }
+
+/* --- Content (formulaire + preview) --- */
+.content {
+  flex-grow: 1;
+  padding: 30px;
+}
+
+/* --- Formulaire --- */
+h2 { margin-top: 0; }
+input, textarea, select {
+  width: 100%;
+  padding: 8px;
+  margin: 6px 0 14px;
+  border: 1px solid #cfcfcf;
+  border-radius: 6px;
+}
+textarea { height: 90px; resize: vertical; }
+
+/* --- Buttons --- */
+.btn {
+  background-color: #1565c0;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.btn.small { background-color: #42a5f5; padding: 6px 10px; font-size: 14px; }
+.btn-secondary { background-color: #90caf9; color: #033459; }
+
+/* --- Form steps --- */
+.form-step { display: none; }
+.form-step.active { display: block; }
+.form-navigation { display: flex; justify-content: space-between; margin-top: 16px; }
+
+/* --- Aperçu du CV --- */
+.hidden { display: none; }
+.cv-preview { margin-top: 30px; }
+.cv-preview-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  overflow: hidden;
+  /* for print color accuracy */
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* --- Structure du CV rendu (gauche / droite) */
+.cv-render {
+  display: flex;
+  min-height: 1120px; /* pour meilleure impression A4-ish */
+}
+
+/* Colonne gauche (gris clair dans exemple) */
+.cv-left {
+  width: 280px;
+  background: #f1f4f8;
+  padding: 30px;
+  border-right: 1px solid #e0e6ee;
+}
+
+/* Photo ronde + zone contact */
+.cv-photo {
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 14px;
+  border: 6px solid white;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  background: #ddd;
+}
+.cv-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.cv-left h4 { margin: 8px 0 4px; text-align: center; font-size: 18px; color: #0d47a1; }
+
+/* Sections left */
+.cv-block { margin-top: 20px; }
+.cv-block h5 {
+  margin: 0 0 8px;
+  font-size: 13px;
+  letter-spacing: 0.6px;
+  color: #222;
+  border-bottom: 1px solid #d7dbe0;
+  padding-bottom: 8px;
+}
+.contact-list { list-style: none; padding: 0; margin: 6px 0 0; font-size: 14px; color: #222; }
+.contact-list li { margin: 8px 0; display: flex; gap: 8px; align-items: center; }
+
+/* Langue - barre */
+.lang-item { margin-bottom: 8px; }
+.lang-name { font-size: 14px; margin-bottom: 6px; }
+.lang-bar {
+  height: 10px;
+  background: #e6eef9;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.lang-fill {
+  height: 100%;
+  width: 40%;
+  border-radius: 8px;
+  background: #0d47a1;
+}
+
+/* Compétences list */
+.skills-list { list-style: disc; padding-left: 18px; margin: 8px 0 0; }
+
+/* --- Colonne droite (contenu principal) --- */
+.cv-right {
+  flex-grow: 1;
+  padding: 0;
+  position: relative;
+}
+
+/* Diagonal header bar to match the picture */
+.cv-header-area {
+  padding: 40px 40px 24px 40px;
+  position: relative;
+  overflow: visible;
+  background: linear-gradient(135deg,#0d47a1 0%, #0d47a1 40%, #dbeafc 40%);
+  color: #fff;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.cv-header-area::before {
+  content: "";
+  position: absolute;
+  right: -120px;
+  top: 0;
+  width: 380px;
+  height: 160%;
+  background: white;
+  transform: rotate(-18deg);
+  transform-origin: top right;
+  z-index: 0;
+}
+.cv-header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 20px;
+}
+.cv-header h1 {
+  margin: 0;
+  font-size: 32px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: #072a4f;
+}
+.cv-header .title-sub {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #0d47a1;
+  text-transform: uppercase;
+}
+
+/* Main content sections */
+.cv-body {
+  padding: 28px 40px;
+  background: white;
+}
+.cv-section { margin-bottom: 18px; }
+.cv-section h3 {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  color: #0d47a1;
+  border-bottom: 1px solid #e0e6ee;
+  padding-bottom: 8px;
+}
+.cv-section p, .cv-section ul { font-size: 14px; color: #222; line-height: 1.5; margin: 6px 0; }
+.cv-section ul { padding-left: 18px; }
+
+/* Experience item style */
+.exp-item { margin-bottom: 10px; }
+.exp-item strong { display: block; font-weight: 700; color: #111; }
+.exp-meta { font-style: italic; color: #666; font-size: 13px; margin-bottom: 6px; }
+
+/* --- Themes variations --- */
+.cv-style-classique .cv-left { background: #f7f9fb; }
+.cv-style-classique .cv-header-area { background: linear-gradient(135deg,#003366 0%, #003366 40%, #f7fbff 40%); }
+.cv-style-classique .lang-fill { background: #003366; }
+
+.cv-style-moderne .cv-left { background: #f8f9fb; }
+.cv-style-moderne .cv-header-area { background: linear-gradient(135deg,#009688 0%, #009688 40%, #f3faf8 40%); }
+.cv-style-moderne .lang-fill { background: #009688; }
+
+.cv-style-colore .cv-left { background: #fff3f7; }
+.cv-style-colore .cv-header-area { background: linear-gradient(135deg,#e91e63 0%, #e91e63 40%, #fff3f7 40%); }
+.cv-style-colore .lang-fill { background: #e91e63; }
+
+/* ---- Footer ---- */
+footer {
+  text-align: center;
+  padding: 15px;
+  background-color: #1565c0;
+  color: white;
+}
+
+/* --- Print rules: n'imprimer que le CV-preview --- */
+/* ---------- IMPRESSION PROPRE DU CV ---------- */
+/* ---------- IMPRESSION PROPRE DU CV ---------- */
+/* ---------- IMPRESSION PROPRE DU CV ---------- */
+@media print {
+    /* Supprime tout sauf le CV */
+    body * {
+      visibility: hidden !important;
+    }
+  
+    #cv-preview, #cv-preview * {
+      visibility: visible !important;
+    }
+  
+    #cv-preview {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: white !important;
+      box-shadow: none !important;
+      transform: scale(1);
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+  
+    /* Ajuste la taille exacte à la page A4 */
+    .cv-container {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto !important;
+      padding: 0 !important;
+      background: white;
+      box-shadow: none !important;
+      page-break-inside: avoid;
+    }
+  
+    /* Supprime toutes marges et numéros de page */
+    @page {
+      size: A4;
+      margin: 0mm !important;
+    }
+  
+    /* Empêche la coupure de sections */
+    .cv-left, .cv-right {
+      page-break-inside: avoid !important;
+    }
+  
+    /* Cache les boutons et les éléments hors CV */
+    .preview-actions,
+    header,
+    footer,
+    nav {
+      display: none !important;
+    }
+  
+    /* Garde les couleurs et le design */
+    * {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-scheme: exact !important;
+    }
+  
+    /* Supprime la petite marge haute automatique */
+    html, body {
+      margin: 0 !important;
+      padding: 0 !important;
+      height: 100%;
+      background: white !important;
+    }
+  }
+  
