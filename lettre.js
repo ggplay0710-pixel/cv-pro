@@ -135,5 +135,3 @@ function escapeHtml(text) {
   if (!text) return "";
   return String(text).replace(/[&<>"']/g, function (m) { return ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' })[m]; });
 }
-
-
