@@ -27,7 +27,7 @@ enPoste.addEventListener("change", () => {
 // changer label si candidature interne
 interneSelect.addEventListener("change", () => {
   if (interneSelect.value === "oui") {
-    motivationLabel.textContent = "Pourquoi ce poste :    motivationLabel.textContent = "Pourquoi ce poste :(ou laisser vide ce remplis automatiquement avec l'IA)";
+    motivationLabel.textContent = "Pourquoi ce poste :(ou laisser vide ce remplis automatiquement avec l'IA)";
     motivationField.placeholder = "Ex : envie d’évoluer vers de nouvelles responsabilités...";
   } else {
     motivationLabel.textContent = "Pourquoi cette entreprise :";
@@ -135,4 +135,5 @@ function escapeHtml(text) {
   if (!text) return "";
   return String(text).replace(/[&<>"']/g, function (m) { return ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' })[m]; });
 }
+
 
